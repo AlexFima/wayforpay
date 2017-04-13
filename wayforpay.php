@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Начало кода АПИ. ТУТ НИЧЕГО НЕ МЕНЯТЬ!!!
- */
-
-////////////////////////////////////////////////////////////////////////////////
 class WayForPay
 {
     const PURCHASE_URL      = 'https://secure.wayforpay.com/pay';
@@ -531,17 +526,17 @@ class WayForPay
 
 
 function CreateWidget($name,$money,$currency) {
-        $_merchant_account='www_nyseacademy_com'; //Аккаунт мерчанта
-        $_merchant_password='c82f2b94942747c1f965121b68e957daaee6306f'; //Уникальная подпись
-        $_merchant_domain='zhybrov.ru'; //Домен аккаунта
+        $_merchant_account='YOURACCOUNTHERE'; //Merchant Account
+        $_merchant_password='YOURSIGNHERE'; //Your unique sign
+        $_merchant_domain='DOMAINNAME'; //Domain name
 
-        $name='Секретные материалы трейдера';
-        $authCode="541963"; //Код авторизации. Присваивается банком
-        $currency="USD"; //Валюта операции
-        //$money="".$_POST['money'].""; //Количество денег (Сумма)     
-        $pay = new WayForPay($_merchant_account,$_merchant_password); //Запуск всей системы
-        $order=uniqid(); //Генерация уникального ID товара. Лучше не трогать
-        $order="ZAKAZ_".$order; //Генерация уникального ID товара. Лучше не трогать
+        $name='NAME OF THE PRODUCT';
+        $authCode="541963"; //authorization code
+        $currency="USD"; 
+       
+        $pay = new WayForPay($_merchant_account,$_merchant_password); 
+        $order=uniqid(); //Unique ID generation
+        $order="ZAKAZ_".$order; 
 
          $fields=array(
         "merchantAccount"=> $_merchant_account,
@@ -585,7 +580,7 @@ function CreateWidget($name,$money,$currency) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Система оплаты</title>
+    <title>Payment system</title>
     <style>
    .button {
   display: inline-block;
@@ -607,71 +602,51 @@ function CreateWidget($name,$money,$currency) {
 <body>
       <br>
     
-        
     <form method='post'>
-     <button type="submit" class='button' name='pay1'>Быстрый старт (97)</button> <br><br>
+     <button type="submit" class='button' name='pay1'>Quick start (97)</button> <br><br>
     </form>
 
+     <form method='post'>
+      <button type="submit" class='button' name='pay2'>Premium (290)</button> 
+     </form>
 
+
+    <br><br>
 
      <form method='post'>
-     <button type="submit" class='button' name='pay2'>Премиум (290)</button> </form>
+      <button type="submit" class='button' name='pay3'>Vip (799)</button> 
+     </form> 
 
-
-      <br><br>
-     <form method='post'>
-     <button type="submit" class='button' name='pay3'>Vip (799)</button> </form> <br><br>
+     <br><br>
    
     <form method='post'>
      <button type="submit" class='button' name='pay4'>Vip (900)</button> <br><br>
     </form>
 
 
-
      <form method='post'>
-     <button type="submit" class='button' name='pay5'>Vip (1200)</button> </form>
+     <button type="submit" class='button' name='pay5'>Vip (1200)</button> 
+     </form>
 
 
       <br><br>
+
      <form method='post'>
-     <button type="submit" class='button' name='pay6'>Vip (1250)</button> </form> <br><br>
+     <button type="submit" class='button' name='pay6'>Vip (1250)</button> 
+     </form> 
+
+      <br><br>
 
 
    
     <?php 
-    ////////////////////////////////////////////////////////////////////////////////////
-
-//Начало конфигурации виджета
-
-//Cоздание массива на основе конфигурации
-
-
-    if(isset($_POST['pay1'])) { 
-        CreateWidget("Быстрый старт (97)","97","USD");  //Назначаем на форму собмит и прописываем для него значения
-        //Первый параметр имя,второй сумма и третий валюта
-    }
-     if(isset($_POST['pay2'])) { 
-        CreateWidget("Премиум (290)","290","USD");  //Назначаем на форму собмит и прописываем для него значения
-        //Первый параметр имя,второй сумма и третий валюта
-    }
-     if(isset($_POST['pay3'])) { 
-        CreateWidget("Vip (799)","799","USD");  //Назначаем на форму собмит и прописываем для него значения
-        //Первый параметр имя,второй сумма и третий валюта
-    }
-
-      if(isset($_POST['pay4'])) { 
-        CreateWidget("Vip (900)","900","USD");  //Назначаем на форму собмит и прописываем для него значения
-        //Первый параметр имя,второй сумма и третий валюта
-    }
-        if(isset($_POST['pay5'])) { 
-        CreateWidget("Vip (1200)","1200","USD");  //Назначаем на форму собмит и прописываем для него значения
-        //Первый параметр имя,второй сумма и третий валюта
-    }
-         if(isset($_POST['pay6'])) { 
-        CreateWidget("Vip (1250)","1250","USD");  //Назначаем на форму собмит и прописываем для него значения
-        //Первый параметр имя,второй сумма и третий валюта
-    }
-
+   
+    if(isset($_POST['pay1'])) {    CreateWidget("Quick start (97)","97","USD"); }
+    if(isset($_POST['pay2'])) {    CreateWidget("Premiom (290)","290","USD");   }
+    if(isset($_POST['pay3'])) {    CreateWidget("Vip (799)","799","USD");       }
+    if(isset($_POST['pay4'])) {    CreateWidget("Vip (900)","900","USD");       }
+    if(isset($_POST['pay5'])) {    CreateWidget("Vip (1200)","1200","USD");     }
+    if(isset($_POST['pay6'])) {    CreateWidget("Vip (1250)","1250","USD");     }
 
     ?>
 
